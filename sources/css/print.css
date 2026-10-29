@@ -1,0 +1,218 @@
+:root {
+  --ink: #2b2a28;
+  --muted: #6b6460;
+  --accent: #3f6c51;
+  --accent-soft: #e8f0ea;
+  --line: #cfc9c2;
+  --paper: #ffffff;
+}
+
+* { box-sizing: border-box; }
+
+@page {
+  size: Letter;
+  margin: 15mm 14mm 16mm 14mm;
+
+  @top-center {
+    content: string(sheettitle);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 8pt;
+    color: #8a837c;
+  }
+
+  @bottom-right {
+    content: "Page " counter(page) " of " counter(pages);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 8pt;
+    color: #8a837c;
+  }
+}
+
+body {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 10.5pt;
+  line-height: 1.45;
+  color: var(--ink);
+  margin: 0;
+}
+
+main { counter-reset: page-marker; }
+
+/* Duplicate the running title as a big in-page header too */
+.sheet-header {
+  border-bottom: 2.5pt solid var(--accent);
+  padding-bottom: 6pt;
+  margin-bottom: 10pt;
+}
+
+h1 {
+  string-set: sheettitle content();
+  font-size: 19pt;
+  line-height: 1.15;
+  margin: 0 0 3pt 0;
+  color: var(--accent);
+}
+
+.kicker {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 8pt;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 6pt 0;
+}
+
+h2 {
+  font-size: 12.5pt;
+  margin: 12pt 0 5pt 0;
+  color: var(--accent);
+  page-break-after: avoid;
+}
+
+h3 {
+  font-size: 10.5pt;
+  margin: 9pt 0 3pt 0;
+  page-break-after: avoid;
+}
+
+p { margin: 4pt 0; }
+
+.intro {
+  font-size: 10pt;
+  color: var(--muted);
+  margin-bottom: 8pt;
+}
+
+.signature-row {
+  display: flex;
+  gap: 14pt;
+  margin-top: 14pt;
+}
+
+.signature-row div { flex: 1; }
+
+.sig-line {
+  border-bottom: 1pt solid var(--ink);
+  height: 20pt;
+}
+
+.sig-label {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 8pt;
+  color: var(--muted);
+  padding-top: 3pt;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+table.rules {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 6pt 0;
+}
+
+table.rules th {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 8.5pt;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-align: left;
+  color: var(--paper);
+  background: var(--accent);
+  padding: 4pt 6pt;
+  border: 0.5pt solid var(--accent);
+}
+
+table.rules td {
+  padding: 5pt 6pt;
+  border: 0.5pt solid var(--line);
+  vertical-align: top;
+}
+
+ul.checklist {
+  list-style: none;
+  padding-left: 0;
+  margin: 6pt 0;
+}
+
+ul.checklist li {
+  margin: 5pt 0;
+  padding-left: 16pt;
+  text-indent: -16pt;
+}
+
+ul.checklist li::before {
+  content: "\2610\00a0\00a0";  /* ballot box */
+  font-size: 11pt;
+}
+
+ul.menu li {
+  padding: 5pt 6pt;
+  margin: 4pt 0;
+  background: var(--accent-soft);
+  border-radius: 3pt;
+  padding-left: 18pt;
+}
+
+.box {
+  border: 1pt solid var(--accent);
+  border-radius: 4pt;
+  background: var(--accent-soft);
+  padding: 7pt 9pt;
+  margin: 8pt 0;
+}
+
+.box p:first-child { margin-top: 0; }
+.box p:last-child { margin-bottom: 0; }
+
+.writein {
+  border-bottom: 1pt solid var(--ink);
+  min-height: 16pt;
+  margin: 3pt 0 7pt 0;
+}
+
+.card {
+  border: 1.2pt solid var(--accent);
+  border-radius: 5pt;
+  padding: 9pt 10pt;
+  margin: 0 0 10pt 0;
+  page-break-inside: avoid;
+}
+
+.card-cut {
+  border-style: dashed;
+  padding: 6pt 8pt 4pt 8pt;
+  page-break-after: always;
+}
+
+.card-cut:last-child { page-break-after: auto; }
+
+.cutcue {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 7.5pt;
+  color: var(--muted);
+  text-align: center;
+  margin: 0 0 6pt 0;
+}
+
+.two-col {
+  column-count: 2;
+  column-gap: 14pt;
+}
+
+.avoid-break { page-break-inside: avoid; }
+
+.review-row td:first-child { width: 16%; }
+
+.big-date {
+  font-size: 11pt;
+  text-align: center;
+}
+
+.footer-note {
+  font-size: 8.5pt;
+  color: var(--muted);
+  border-top: 0.5pt solid var(--line);
+  margin-top: 12pt;
+  padding-top: 5pt;
+}
